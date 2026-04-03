@@ -34,7 +34,7 @@ Program ini menampilkan perbandingan visual secara langsung (*side-by-side*) yan
 
 Berikut adalah hasil perbandingan antara Forward dan Inverse Kinematics yang dihasilkan oleh program:
 
-![Perbandingan FK vs IK](assets/Hasil.png)
+![Perbandingan FK vs IK](assets/Hasil.PNG)
 
 *Gambar di atas menunjukkan perbandingan sisi-ke-sisi antara perhitungan posisi (FK) dan perhitungan sudut sendi (IK).*
 ## 🚀 Cara Menjalankan Program
