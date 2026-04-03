@@ -1,28 +1,41 @@
-# Planar 2-DOF Robot Kinematics (OOP Approach)
+# Planar 2-DOF Robot: Forward vs Inverse Kinematics
 
-Repositori ini berisi implementasi matematis dan simulasi visual untuk **Forward Kinematics (FK)** dan **Inverse Kinematics (IK)** pada lengan robot planar dengan 2 derajat kebebasan (2-DOF). 
+Repositori ini berisi implementasi simulasi matematis untuk pergerakan lengan robot planar dengan 2 Derajat Kebebasan (2-DOF). Proyek ini dibangun menggunakan bahasa Python dengan pendekatan **Object-Oriented Programming (OOP)** untuk struktur kode yang modular, serta `matplotlib` untuk visualisasi komparatif.
 
-Berbeda dengan implementasi prosedural biasa, proyek ini dibangun menggunakan paradigma **Object-Oriented Programming (OOP)** di Python menggunakan pustaka `numpy` untuk komputasi matriks/trigonometri dan `matplotlib` untuk visualisasi grafik.
+## 🎯 Tujuan Proyek
 
-## 📌 Teori Dasar
+Proyek ini bertujuan untuk membuktikan secara matematis dan visual perbedaan mendasar antara **Forward Kinematics (FK)** dan **Inverse Kinematics (IK)** pada robot manipulator. 
+
+Program ini menampilkan perbandingan visual secara langsung (*side-by-side*) yang mendemonstrasikan bahwa:
+1. **Satu kombinasi sudut** hanya akan menghasilkan **satu posisi spesifik** (Karakteristik unik FK).
+2. **Satu titik posisi target** dapat dicapai dengan **lebih dari satu kombinasi sudut/pose** (Karakteristik multi-solusi IK).
+
+---
+
+## 📌 Teori Dasar & Perbedaan Konsep
 
 ### 1. Forward Kinematics (FK)
-Mencari posisi akhir (end-effector) $(x, y)$ berdasarkan masukan sudut sendi $\theta_1$ dan $\theta_2$.
-$$x = L_1 \cos(\theta_1) + L_2 \cos(\theta_1 + \theta_2)$$
-$$y = L_1 \sin(\theta_1) + L_2 \sin(\theta_1 + \theta_2)$$
+* **Deskripsi:** Proses mencari letak/koordinat ujung lengan robot (*end-effector*) berdasarkan sudut putar masing-masing sendi yang diketahui.
+* **Input:** Sudut Sendi 1 (θ1) dan Sudut Sendi 2 (θ2).
+* **Output:** Koordinat Posisi (X, Y). Tepat hanya ada 1 solusi absolut.
+* **Persamaan Matematis:**
+  * X = L1 * cos(θ1) + L2 * cos(θ1 + θ2)
+  * Y = L1 * sin(θ1) + L2 * sin(θ1 + θ2)
 
 ### 2. Inverse Kinematics (IK)
-Mencari sudut sendi $\theta_1$ dan $\theta_2$ yang dibutuhkan untuk mencapai target koordinat $(x, y)$. 
-Solusi ini menghitung hukum kosinus untuk mendapatkan $\theta_2$:
-$$\cos(\theta_2) = \frac{x^2 + y^2 - L_1^2 - L_2^2}{2 L_1 L_2}$$
-$$\theta_2 = \pm \arccos(\cos(\theta_2))$$
-*Catatan: Nilai $\pm$ merepresentasikan dua kemungkinan konfigurasi lengan: Elbow-Up dan Elbow-Down.*
+* **Deskripsi:** Proses membalik logika FK, yaitu mencari berapa derajat masing-masing sendi harus ditekuk agar ujung lengan robot bisa mencapai titik target yang diinginkan.
+* **Input:** Titik Target Koordinat (X, Y).
+* **Output:** Sudut Sendi 1 (θ1) dan Sudut Sendi 2 (θ2).
+* **Karakteristik Solusi:** Pada robot 2-DOF, IK memiliki dua kemungkinan konfigurasi pose untuk mencapai titik yang sama, yaitu **Elbow Down** (siku ke bawah) dan **Elbow Up** (siku ke atas).
+* **Persamaan Matematis:** Diselesaikan menggunakan kombinasi Hukum Kosinus dan fungsi trigonometri arc-tangent.
 
-Selanjutnya, $\theta_1$ didapatkan dengan:
-$$\theta_1 = \text{atan2}(y, x) - \text{atan2}(L_2 \sin(\theta_2), L_1 + L_2 \cos(\theta_2))$$
+---
 
 ## 🚀 Cara Menjalankan Program
 
-1. Install pustaka yang diperlukan:
+Pastikan Anda sudah menginstal Python di sistem Anda.
+
+1. **Kloning repositori ini:**
    ```bash
-   pip install -r requirements.txt
+   git clone [https://github.com/shidiqeka/Planar-Kinematics.git](https://github.com/shidiqeka/Planar-Kinematics.git)
+   cd Planar-Kinematics
