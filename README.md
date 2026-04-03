@@ -30,7 +30,13 @@ Program ini menampilkan perbandingan visual secara langsung (*side-by-side*) yan
 * **Persamaan Matematis:** Diselesaikan menggunakan kombinasi Hukum Kosinus dan fungsi trigonometri arc-tangent.
 
 ---
+## 📊 Hasil Visualisasi
 
+Berikut adalah hasil perbandingan antara Forward dan Inverse Kinematics yang dihasilkan oleh program:
+
+![Perbandingan FK vs IK](assets/hasil.png)
+
+*Gambar di atas menunjukkan perbandingan sisi-ke-sisi antara perhitungan posisi (FK) dan perhitungan sudut sendi (IK).*
 ## 🚀 Cara Menjalankan Program
 
 Pastikan Anda sudah menginstal Python di sistem Anda.
